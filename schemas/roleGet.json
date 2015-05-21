@@ -27,9 +27,8 @@
 				}
 			} ,
 			"patternProperties" : {
-				"^[a-zA-Z0-9_]+$" : {
+				"[a-zA-Z0-9_]+" : {
 					"type" : "object" ,
-					"required" : false ,
 					"properties" : {
 						"read" : {
 							"type" : "boolean" ,
@@ -58,9 +57,8 @@
 		}
 	},
 	"patternProperties" : {
-		"^[a-zA-Z0-9_]+$" : {
-			"type" : "any" ,
-			"required" : false
+		"[a-zA-Z0-9_]+" : {
+			"type" : [ "array", "boolean", "integer", "number", "null", "object", "string" ]
 		}
 	}
 }
