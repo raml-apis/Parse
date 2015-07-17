@@ -11,5 +11,14 @@
 			"write" : true
 		}
 	} ,
-	"name" : "Moderators"
+	"name" : "Moderators",
+    "roles": {
+      "__type": "Relation",
+      "className": "_Role"
+    },
+    "users": {
+      "__type": "Relation",
+      "className": "_User"
+    }
+	
 }

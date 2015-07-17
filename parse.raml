@@ -18,9 +18,11 @@ schemas:
   - userGet: !include schemas/userGet.json
   - userPut: !include schemas/userPut.json
   - usersPostResponse: !include schemas/usersPostResponse.json
+  - userLogin: !include schemas/userLogin.json
   - rolePost: !include schemas/rolePost.json
   - roleGet: !include schemas/roleGet.json
   - rolePut: !include schemas/rolePut.json
+  - rolesQuery: !include schemas/rolesQuery.json
   - installationsQuery: !include schemas/installationsQuery.json
   - installationPost: !include schemas/installationPost.json
   - installationGet: !include schemas/installationGet.json
@@ -176,8 +178,8 @@ traits:
       200: 
         body: 
           application/json: 
-            schema: userGet
-            example: !include examples/userGet.json
+            schema: userLogin
+            example: !include examples/userLogin.json
     securedBy: [ basic , commonSchema ]
 /requestPasswordReset: 
   post: 
@@ -191,6 +193,13 @@ traits:
     securedBy: [ basic , commonSchema ]
 /roles: 
   type: { parseCollection: { resourceName: roles } }
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: rolesQuery
+            example: !include examples/rolesQuery.json
   post: 
     body: 
       application/json: 

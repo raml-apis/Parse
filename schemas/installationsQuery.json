@@ -25,7 +25,11 @@
 					"updatedAt" : {
 						"type" : "string" ,
 						"required" : true
-					}
+					} ,
+					"deviceToken" : {
+						"type" : "string" ,
+						"required" : true
+					}	
 				} ,
 				"patternProperties" : {
 					"[a-zA-Z0-9_]+" : {
