@@ -48,6 +48,7 @@ traits:
     type: { parseCollection: { resourceName: classes } }
     description: Collection of class instances
     get: 
+      securedBy: [ commonSchema ]
       description: |
         Retreives objects. The response body is a JSON object containing all the user-provided fields,
         plus the createdAt, updatedAt, and objectId fields.
@@ -94,6 +95,8 @@ traits:
             schema: classPut
             example: !include examples/classPut.json
         securedBy: [ commonSchema ]
+      delete:
+        securedBy: [ commonSchema ]
 /batch: 
   post: 
     description: To reduce the amount of time spent on network round trips, you can create, update, or delete up to 50 objects in one call, using the batch endpoint.
@@ -111,6 +114,7 @@ traits:
 /users: 
   type: { parseCollection: { resourceName: users } }
   get: 
+    securedBy: [ commonSchema ]
     responses: 
       200: 
         body: 
@@ -161,9 +165,9 @@ traits:
         application/json: 
           schema: userPut
           example: !include examples/userPut.json
-      securedBy: [ sessionTokenSchema ]
+      securedBy: [ sessionTokenSchema, masterSchema ]
     delete: 
-      securedBy: [ sessionTokenSchema ]
+      securedBy: [ sessionTokenSchema, masterSchema ]
 /login: 
   get: 
     description: "Logs in a user to his or her account. Response provides a 'sessionToken' which is used to invoke methods with authorized access."
@@ -194,6 +198,7 @@ traits:
 /roles: 
   type: { parseCollection: { resourceName: roles } }
   get:
+    securedBy: [ commonSchema ]
     responses:
       200:
         body:
@@ -306,6 +311,7 @@ traits:
     
     'channels' is an optional array of strings representing the subscriptions of this installation object.
   get: 
+    securedBy: [ masterSchema ]
     responses: 
       200: 
         body: 
@@ -338,6 +344,8 @@ traits:
           schema: installationPut
           example: !include examples/installationPut.json
       securedBy: [ commonSchema ]
+    delete:
+      securedBy: [ masterSchema ]
 /functions/{functionName}: 
   description: |
     Cloud functions can be called from any of the client SDKs, as well as through the REST API

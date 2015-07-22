@@ -70,9 +70,10 @@
 								"type" : "string" ,
 								"required" : true
 							} ,
-			      			"className" : {
-			      				"type" : "string" ,
+								"className" : {
+								"type" : "string",
 								"required" : true
+							}
 						}
 					} ,
 					"roles" : {
