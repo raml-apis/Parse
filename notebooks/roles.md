@@ -430,27 +430,15 @@ assert.equal(updateRoleResponse.status,200)
 
 
 
-Query roles. List roles for the "programmer1" user
+Query users. List users for the "Programmer" role
 
 
 
 ```javascript
 
-queryRolesResponse = client.roles.get({
+queryRolesResponse = client.users.get({
 
-  "where":{
-
-    "users": {
-
-      "__type": "Pointer",
-
-      "className":"_User",
-
-      "objectId": userIDs["programmer1"]
-
-    }
-
-  }
+  "where": "{\"$relatedTo\":{\"object\":{\"__type\":\"Pointer\",\"className\":\"_Role\",\"objectId\":\"" + programmerRoleId + "\"},\"key\":\"users\"}}"
 
 }, {headers: keyHeaders})
 

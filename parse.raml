@@ -233,10 +233,6 @@ traits:
       securedBy: [ masterSchema ]
     delete: 
       description: Delete role. Allows both authorized and master access.
-      headers: 
-        X-Parse-REST-API-Key: 
-        X-Parse-Session-Token: 
-        X-Parse-Master-Key: 
       securedBy: [ sessionTokenSchema , masterSchema ]
 /files: 
   /{fileName}: 
